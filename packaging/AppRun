@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# AppRun for the epub-shrink AppImage.
+#
+# Everything the app needs travels inside this image (Python, PySide6/Qt,
+# Pillow), so the only host requirement is a 64-bit Linux kernel and the FUSE
+# runtime that AppImages use. No host Python, Pillow or Tcl/Tk is required.
+set -e
+
+HERE="$(cd "$(dirname "$(readlink -f "${0}")")" && pwd)"
+
+# Qt must never try to reach a display that isn't there; the offscreen
+# platform is only ever used for headless checks, not for normal use.
+export QT_QPA_PLATFORM="${QT_QPA_PLATFORM:-xcb}"
+export XDG_DATA_DIRS="${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
+
+exec "$HERE/usr/bin/epub-shrink-gui" "$@"

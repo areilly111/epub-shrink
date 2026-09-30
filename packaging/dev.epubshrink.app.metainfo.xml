@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>dev.epubshrink.app</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+
+  <name>EPUB Compressor</name>
+  <summary>Reduce the size of EPUB books by recompressing their artwork</summary>
+
+  <description>
+    <p>
+      EPUB Compressor shrinks EPUB books by recompressing the images inside
+      them. Book text is never touched: only artwork is re-encoded, and only
+      when doing so actually makes the file smaller.
+    </p>
+    <p>
+      Books can be reduced in place, with the untouched original archived to a
+      Backups folder and restorable at any time, or written out as new files.
+      Presets target common e-readers, and a size target can be set directly.
+    </p>
+    <p>
+      Finished books can be sent straight to an Audiobookshelf server, with the
+      title, author, series and other details read from the book itself.
+    </p>
+  </description>
+
+  <launchable type="desktop-id">dev.epubshrink.app.desktop</launchable>
+
+  <categories>
+    <category>Utility</category>
+  </categories>
+
+  <keywords>
+    <keyword>epub</keyword>
+    <keyword>kindle</keyword>
+    <keyword>ebook</keyword>
+    <keyword>calibre</keyword>
+    <keyword>audiobookshelf</keyword>
+  </keywords>
+
+  <provides>
+    <binary>epub-shrink-gui</binary>
+  </provides>
+
+  <content_rating type="oars-1.1" />
+
+  <releases>
+    <release version="2.0" date="2026-09-29">
+      <description>
+        <p>
+          PySide6 interface, standalone Audiobookshelf upload, full EPUB
+          metadata extraction, and e-reader presets.
+        </p>
+      </description>
+    </release>
+  </releases>
+</component>

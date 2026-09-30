@@ -1,0 +1,28 @@
+# Build output
+build/
+dist/
+*.AppImage
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Settings and anything holding credentials — never commit these.
+# Settings live in ~/.config/epub-shrink/settings.json and contain the
+# Audiobookshelf API key or password.
+settings.json
+*.settings.json
+.env
+.env.*
+
+# Backups written by in-place runs
+Backups/
+
+# Editors and OS
+.vscode/
+.idea/
+*.swp
+.DS_Store

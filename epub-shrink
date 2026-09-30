@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# Run the epub-shrink engine from wherever this folder happens to live.
+#
+# This is only an interpreter picker; the real CLI is epub_shrink.py.
+# The interpreter is chosen in this order:
+#   1. $EPUB_SHRINK_PYTHON, when the caller has set one
+#   2. the venv in ~/.local/share/epub-shrink/venv (see install.sh)
+#   3. whatever python3 is on PATH
+set -euo pipefail
+
+HERE="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)"
+
+if [[ -n "${EPUB_SHRINK_PYTHON:-}" ]]; then
+    PY="$EPUB_SHRINK_PYTHON"
+elif [[ -x "$HOME/.local/share/epub-shrink/venv/bin/python3" ]]; then
+    PY="$HOME/.local/share/epub-shrink/venv/bin/python3"
+else
+    PY="python3"
+fi
+
+if ! "$PY" -c "import PIL" 2>/dev/null; then
+    echo "epub-shrink needs Pillow, and $PY does not have it." >&2
+    echo "Run ./install.sh, or set EPUB_SHRINK_PYTHON to an interpreter that has it." >&2
+    exit 1
+fi
+
+exec "$PY" "$HERE/epub_shrink.py" "$@"

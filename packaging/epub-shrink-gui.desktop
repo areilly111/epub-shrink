@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=EPUB Compressor
+GenericName=EPUB Compressor
+Comment=Reduce EPUB file size by recompressing artwork, and send books to Audiobookshelf
+Exec=epub-shrink-gui %F
+Icon=dev.epubshrink.app
+Terminal=false
+Categories=Utility;
+MimeType=application/epub+zip;
+Keywords=epub;kindle;compress;compressor;ebook;calibre;audiobookshelf;
+StartupNotify=true
